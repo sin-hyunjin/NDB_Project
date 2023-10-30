@@ -1,0 +1,169 @@
+#sidebar_toggle
+{
+  display: block;
+  
+  top: 50px;
+  left: 50px;
+  
+  z-index: 1;
+  
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#sidebar_toggle a
+{
+  text-decoration: none;
+  color: #FFFFFF;
+  
+  transition: color 0.3s ease;
+}
+
+#sidebar_toggle a:hover
+{
+  color: tomato;
+}
+
+#sidebar_toggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  cursor: pointer;
+    opacity: 0; /* 이 부분을 숨김*/
+  z-index: 2; /* 햄버거 위에 위치*/
+  -webkit-touch-callout: none;
+}
+
+/*
+ * 간단한 햄버거 버튼 만들기
+ */
+#sidebar_toggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: #cdcdcd;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#sidebar_toggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#sidebar_toggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * 햄버거의 모든 조각을
+ * 십자형으로 바꿉니다.
+ */
+#sidebar_toggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #FFFFFF;
+}
+
+/*
+ * 가운데숨기기.
+ */
+#sidebar_toggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * 마지막 부분 다른 방향으로 가게함.
+ */
+#sidebar_toggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ *  화면의 좌측 상단에 고정 위치
+ */
+#leftside
+{
+  /* font-align */
+  text-align: center;
+
+  position: absolute;
+  width: 180px;
+  margin: -100px 0 0 -50px;
+  padding: 120px 50px 50px 63px;
+  border-radius: 20px;
+  background: #212121;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* 텍스트의 깜박임 멈추기 */
+  
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#leftside li
+{  text-align: left;
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+/*
+ *왼쪽에서 슬라이드 하여 들영ㅁ
+ */
+#sidebar_toggle input:checked ~ ul
+{
+  transform: none;
+}    
+   /* 회원 정보 스타일 */
+.user-info {
+   
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; 
+}
+
+.user-image {
+    width: 50px; /* 이미지 크기 조절 */
+    height: 50px;
+    border-radius: 50%; /* 동그랗게 만들기 */
+    margin-right: 17px; /* 이름/이메일과의 간격 조절 */
+}
+
+.user-details {
+  text-align: left;
+    display: flex;
+    flex-direction: column; /* 이름과 이메일을 위/아래로 배열 */
+}
+
+.user-email {
+    margin: 0; /* 기본 여백 제거 */
+    color: #FFFFFF; /* 글자 색상 */
+}
+
+.user-grade {
+  padding-top:5px;
+    margin: 0; /* 기본 여백 제거 */
+    color: #FFD700; /* 금색으로 설정 (Gold Member에 적합) */
+    font-weight: bold; /* 볼드체로 표시 */
+    font-size: 0.8em; /* 글자 크기 조절 */
+}

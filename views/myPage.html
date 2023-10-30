@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="shortcut icon"
+      sizes="16x16 32x32 64x64"
+      href="/img/NDBlogo.png"
+    />
+    <title>NDB</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/3c016f9a45.js" crossorigin="anonymous"></script>
+    <script src="js/mypage_script.js"></script>
+    <script src="js/chatbot_script.js"></script>
+    
+   
+    <script src="js/index.js"></script>
+    <script src="./main.js"></script>
+    <script src="/js/subs.js"></script>
+    <link rel="stylesheet" href="/css/eunwoo_style.css">
+    <link rel="stylesheet" href="/css/yubin_sidebar.css">
+    <link rel="stylesheet" href="/css/subs.css"> 
+    <link rel="stylesheet" href="css/mypage_style.css">
+    <!-- 결제창을 위한 라이브러리-->
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <!-- iamport.payment.js -->
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+   
+    
+</head>
+<body>
+    <nav id="main_navbar">
+        <div class="main_navLeft">
+
+            <div id="sidebar_toggle">
+                <!--
+    클릭 수신기로 사용되는 가짜/숨겨진 체크박스,
+    이를 통해 :checked 선택자를 사용
+    -->
+                <input type="checkbox" />
+                <!--
+    햄버거 역할을 하는 몇 개의 span 요소.
+    -->
+                <span></span>
+                <span></span>
+                <span></span>
+                <!--사이드바는 버튼 내부에 있어야 함-->
+                <ul id="leftside">
+                    <!-- 회원 정보 섹션 시작 -->
+                    <div class="user-info">
+                        <img src="https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg"
+                            alt="User Profile Picture" class="user-image">
+                        <div class="user-details" >
+                            <p class="user-email" name="email">{{ results[0].EMAIL }}</p>
+                            <p class="user-grade" name="vip">{{ results[0].MEMBER_LV }}</p>
+                        </div>
+                    </div>
+                    <hr> <!-- 구분선 추가 -->
+                    <!-- 회원 정보 섹션 끝 -->
+
+                    <a href="http://localhost:3003/mypage" id="mypage_btn_open">
+                        <li>마이페이지</li>
+                    </a>
+                    <a href="#" class="subs_btn_open">
+                        <li>구독</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="main_nav_logo">
+                <a href="http://localhost:3003/index">NDB</a>
+
+            </div>
+            <div class="main_navMiddle">
+                <div class="main_Nav_search">
+                    <select name="main_language" id="main_navSearchbar" class="main_searchLanguage"
+                        style="width:50px;height:30px;">
+                        <option value=" ">언어</option>
+                        <option value="html">html</option>
+                        <option value="css">css</option>
+                        <option value="javascript">javascript</option>
+                        <option value="java">java</option>
+                        <option value="python">python</option>
+                        <option value="c_language">C언어</option>
+                    </select>
+                    <!-- <i class="fa-solid fa-chevron-down" style="color: #d1d1d1;"></i> -->
+                    <input type="text" class="main_searchBar" name="main_searchBar_Name">
+                    <!-- 자동완성 단어 리스트 -->
+                    <div class="main_autocomplete"></div>
+                    <button type="submit" class="main_search_button" onclick="user_Btn()">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #d1d1d1;"></i>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        <div class="main_navRight">
+            <input type="checkbox">
+                <ul class="main_popularSerch">
+                    <li>
+                        <span>인기 검색어</span>
+                    </li>
+                    <li>|</li>
+                    <li>
+                        <a>파이썬 반복문</a>
+                    </li>
+                </ul>
+            <div class="checkbox-wrapper-2">
+                <input type="checkbox" id="main_Nav_themecheck" class="sc-gJwTLC ikxBAC" onclick='is_checked()'>
+            </div>
+            <div id="main_btnWrap">
+                <!-- 로그인 버튼 -->
+                <!-- <button type="button" class="main_loginBtn main_modalBtn">로그인</button> -->
+                <!-- 회원가입 버튼 -->
+                <form action="http://localhost:3003/login">
+                    <button type="submit" class="main_signupBtn main_modalBtn">log out</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- 회원 정보 섹션 시작 -->
+    <div class="user-info">
+      <img src="https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg" alt="User Profile Picture" class="user-image">
+      <div class="user-details">
+          <p class="user-email">user@email.com</p>
+          <p class="user-grade">Gold</p>
+      </div>
+  </div>
+  <hr> <!-- 구분선 추가 -->
+  <!-- 회원 정보 섹션 끝 -->
+
+  <!-- 기존의 메뉴 항목들 -->
+  
+                    <!-- <a href="http://localhost:3003/mypage" id="mypage_btn_open">
+                        <li>마이페이지</li>
+                    </a>
+                    <a href="#" class="subs_btn_open">
+                        <li>구독</li>
+                    </a>
+
+                </ul>
+            </div>
+                <div class="main_nav_logo">
+                    <a href="http://localhost:3003/index">NDB</a> -->
+
+                </div>
+                <div class="main_navMiddle">
+
+                    <div id="main_navSearchbar" class="main_search">
+                        <select name="main_language" id="" class="main_searchLanguage"
+                            style="width:50px;height:30px;">
+                            <option value=" ">언어</option>
+                            <option value="html">html</option>
+                            <option value="css">css</option>
+                            <option value="javascript">javascript</option>
+                            <option value="java">java</option>
+                            <option value="python">python</option>
+                            <option value="c_language">C언어</option>
+                        </select>
+                        <!-- <i class="fa-solid fa-chevron-down" style="color: #d1d1d1;"></i> -->
+                        <input type="text" class="main_searchBar" name="main_searchBar_Name">
+                        <!-- 자동완성 단어 리스트 -->
+                        <div class="main_autocomplete"></div>
+                        <button type="submit" class="main_search_button" onclick=select()>
+                            <i class="fa-solid fa-magnifying-glass" style="color: #d1d1d1;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- 메인 이미지 위치 조정을 위한 div -->
+        <div class="main_position"></div>
+        
+        <div id="main_modalWrap">
+            <div id="main_modalContent">
+                <div id="main_modalBody">
+                    <!-- 닫기 버튼 -->
+                    <span id="main_closeBtn">&times;</span>
+                    <!-- 팝업창 내 글귀 -->
+                    <p>modal-popup 입니다.</p>
+                </div>
+            </div>
+        </div>
+        <!--네비게이션 바 제외 body 영역 선택-->
+        
+        </main>
+            <!-- 상단 모달바 종료 -->
+        <div class="my_main_container">    
+            <div id = mp_spacedivision></div> 
+        
+            <div class = mp_mainpage>
+            <!-- 프로필 카드 창 -->
+            <div class ='mp_card'>
+                <div class="mp_banner">
+                    <div class="profile"><i class="fa-solid fa-user fa-6x"></i></div>
+                </div>
+                <h2 class="mp_Name" id="Mp_id">{{name}}</h2>
+                <span class="mp_Name" id="Mp_name">{{email}}</span>
+            </div>
+            <!-- 프로필 카드 창 종료 -->
+            
+            <!-- 메인 탭메뉴창 -->
+            <div class="mp_tabmenu notosanskr">
+                <ul class="mp_tabs notosanskr">
+                  <li class="mp_tab-link current" data-tab="mp_tab-1">풀었던 문제</li>
+                  <li class="mp_tab-link notosanskr" data-tab="mp_tab-2">개인 정보</li>
+                  <li class="mp_tab-link notosanskr" data-tab="mp_tab-3">결제 정보</li>
+                  <li class="mp_tab-link notosanskr" data-tab="mp_tab-4">현재 등급</li>
+                  <li class="mp_tab-link notosanskr" data-tab="mp_tab-5">문의 사항</li>
+                  <li class="mp_tab-link notosanskr" data-tab="mp_tab-6">탈퇴 하기</li>
+                  <li class="mp_tab-link notosanskr" data-tab="mp_tab-7">계정 연동</li>
+                </ul>
+              
+                <div id="mp_tab-1" class="mp_tab-content current"><h2 class = 'mp_h2'>풀었던 문제
+                </h2><div class="mp_output" id="mp_listSpace"> 
+                    <table id='mp_review'>
+                        <thead>
+                            <tr>
+                                <th>EXAM_ID</th>
+                                <th>EXAM_LANGUAGE</th>
+                                <th>SEARCH_WORD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for question in questions %}
+                                <tr>
+                                    <form action="/index" >
+                                    <td><a href="/mypage/index">{{ question.EXAM_ID }}</a></td>
+                                    <td><a href="/mypage/index">{{ question.EXAM_LANGUAGE }}</a></td>
+                                    <td><a href="/mypage/index">{{ question.SEARCH_WORD }}</a></td>
+                                </form>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        
+                    </table>
+                    <div class="pagination">
+                            {% for i in range(1, total_pages + 1) %}
+                                <a href="/mypage?page={{ i }}">{{ i }}</a>
+                            {% endfor %}
+                        </div>
+                </div></div>
+                <div id="mp_tab-2" class="mp_tab-content"><h2 class = 'mp_h2'>개인 정보</h2>
+                    <div class="mp_output" id="mp_frotable">
+                    <table class ='mypagefro'>
+                        <tr><td >이름     </td><td class ='mp_myInfo'><input class="mp_Info" name="ID" value="{{ name }}" placeholder="이름이 표시될 곳입니다."  ></td></tr>
+                        <tr><td >비밀번호 </td><td class ='mp_myInfo'><input class="mp_Info" name="PW" value="{{ password }}" placeholder="비밀번호가 표시될 곳입니다." type="password"  ></td><td><button id="mp_nameCh">변경</button></td></tr>
+                        <tr><td >별명     </td><td class ='mp_myInfo'><input class="mp_Info" name="NICK" value="{{ id }}" placeholder="별명이 표시될 곳입니다." ></td></tr>
+                        <tr><td >주소     </td><td class ='mp_myInfo'><input type="text" readonly="yes" placeholder="주소가 표시될 곳입니다." class="mp_Info"></td></tr>
+                    </table>
+                    </div>
+                    </form>
+                </div> 
+                <!-- 결제 정보에 member_lv에 따라 이미지가 출력되도록 조정  -->
+                <div id="mp_tab-3" class="mp_tab-content">
+                    <h2 class='mp_h2'>결제 정보</h2>
+                    <div class="mp_output">
+                        {% if member_lv == "BASIC" %}
+                            <!-- Here, insert the information related to BASIC membership -->
+                            <img src="/img/BASIC.png" alt="BASIC Membership Image">
+                        {% elif member_lv == "pro" %}
+                            <!-- Here, insert the information related to PRO membership -->
+                            <img src="/img/PRO.png" alt="PRO Membership Image">
+                            
+                        {% elif member_lv == "STANDARD" %}
+                            <!-- Here, insert the information related to STANDARD membership -->
+                            <img src="/img/STANDARD.png" alt="STANDARD Membership Image">
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- 현재 등급 -->
+                <div id="mp_tab-4" class="mp_tab-content">
+                    <h2 class="mp_h2">현재 등급</h2>
+                    <div class="mp_output" id="currentGradeInfo">
+                        <p>현재 등급: <span id="userGrade">{{ userGrade }}</span></p>
+                    </div>
+                </div>
+                
+                <div id="mp_tab-5" class="mp_tab-content"><h2 class = 'mp_h2'>문의할 사항</h2><div class="mp_output" id="mp_questiontext"><textarea name=""  cols="80" rows="20" id="mp_question"></textarea><input type="submit"></div></div>
+                <div id="mp_tab-6" class="mp_tab-content"><h2 class = 'mp_h2'>탈퇴 하기</h2><div class="mp_output" id="mp_secession">
+                    <div id= mp_secessionSpace>
+                    <p class='mp_secession'>아직 공부할 수 있는 문제가 많이 남아있어요!</p><p class="mp_secession">정말로 탈퇴하실 건가요?</p><p class="mp_secession">탈퇴하시면 지금까지 저장된 문제, 구독 정보, 등급이 전부 초기화되고 복구할 수 없습니다!</p><button id="mp_secessionButton">탈퇴하기</button>
+                    </div></div></div>
+
+                <div id="mp_tab-7" class="mp_tab-content"><h2 class = 'mp_h2'>계정연동</h2>
+                    
+                    <div><p>계정 연동을 원하시면 아래의 버튼을 눌러주세요.</p>
+                    <button class="mp_auth-butoon google" onclick="location.href='#'"><img src="/img/google_img.png" alt="" class = 'mp_emoticon'></button>
+                    <button class="mp_auth-butoon github" onclick="location.href='#'"><img src="/img/github_img.png" alt=""class = 'mp_emoticon'></button>
+                    <button class="mp_auth-butoon kakao" onclick="location.href='#'"><img src="/img/kakao_img.png" alt=""class = 'mp_emoticon'></button>
+                    </div>    
+                </div>
+                </div>
+            </div>
+        </div>       
+       
+        
+        <!-- 메인 탭메뉴 종료 -->
+
+         <!-------------------------------------- 구독창  ------------------------------------>
+         <div class="overlay"></div>
+        <div class="subs_modal">
+            <div class="subs_modal_content">
+                <div class="subs_header">
+                    <div>
+                        <h1 id="subs_title">Member of NDB</h1>
+                    </div>
+                    <div>
+                        <button class="subs_button_close">&times;</button>
+                    </div>
+
+                    <div>
+                        <p class="subs_subtitle">
+                            학습 능률을 높이는 방법! <br />
+                            "구독"으로 다양한 혜택을 누리세요! <br /><br>
+                            For month
+                        </p>
+                    </div>
+
+                </div>
+                <div class="subs_desc_content">
+                    <div class="content1 content-box">
+                        <div>
+                            <h3>BASIC</h3>
+                        </div>
+                        <div class="subs_benefit">
+                            <div class="subs_price">무료</div>
+                            <ul class="subs_li">
+                                <li>-&nbsp; 버전 업그레이드</li>
+                                <li>-&nbsp; 테마 설정</li>
+                                <li>-&nbsp; 예제에 대한 개념 정리</li>
+                                <li>&nbsp;</li>
+                                <li>&nbsp;</li>
+                                <li>&nbsp;</li>
+                                <li>&nbsp;</li>
+                            </ul>
+                        </div>
+                        <!-- <input type="email" placeholder="이메일 주소를 입력하세요."> -->
+
+                        <div class="subs_btn">
+                            <a href="http://localhost:3003/index" id="subscribe-link"><button>구독하기</button></a>
+                        </div>
+                    </div>
+                    <div class="content2 content-box">
+                        <div>
+                            <h3>STANDARD</h3>
+                        </div>
+                        <div class="subs_benefit">
+                            <div class="subs_price">￦5,000 </div>
+                            <ul class="subs_li">
+                                <li>-&nbsp; 버전 업그레이드 </li>
+                                <li>-&nbsp; 테마 설정 </li>
+
+                                <li>-&nbsp; 예제에 대한 개념 정리</li>
+                                <li>-&nbsp; 배너 제거 </li>
+                                <li>-&nbsp; 자사 커뮤니티 사이트 가입</li>
+                                <li>-&nbsp; 추천 강의 20% 할인권</li>
+                                <li>&nbsp; </li>
+                            </ul>
+                        </div>
+                        <!-- <input type="email" placeholder="이메일 주소를 입력하세요."> -->
+                        <div class="subs_btn">
+                            <button onclick="requestPay()" id="subscribe-link2">구독하기</button>
+                        </div>
+
+                    </div>
+                    <div class="content3 content-box">
+                        <div>
+                            <h3>pro</h3>
+                        </div>
+                        <div class="subs_benefit">
+                            <div class="subs_price">￦7,000 </div>
+                            <ul class="subs_li">
+                                <li>-&nbsp; 버전 업그레이드 </li>
+                                <li>-&nbsp; 테마 설정 </li>
+
+                                <li>-&nbsp; 예제에 대한 개념 정리 </li>
+                                <li>-&nbsp; 배너 제거 </li>
+                                <li>-&nbsp; 자사 커뮤니티 사이트 가입</li>
+
+                                <li>-&nbsp; 추천 강의 40% 할인권</li>
+                                <li>-&nbsp; 인기 문제&개념 모음집PDF </li>
+                            </ul>
+                        </div>
+
+
+                        <!-- <input type="email" placeholder="이메일 주소를 입력하세요."> -->
+                        <div class="subs_btn">
+                            <button onclick="requestPay1()" id="subscribe-link3">구독하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-------------------------------------- 구독창  끝------------------------------------>
+
+        <!-- <script>
+            // 열기 버튼을 클릭하면 모달 창을 보이게 하도록 이벤트 핸들러 추가
+                        $('.subs_btn_open').click(function () {
+                            $('.subs_modal, .overlay').addClass("active");
+                        });
+    
+                        // 닫기 버튼을 클릭하면 모달 창이 닫히도록 이벤트 핸들러 추가
+                        $('.subs_button_close, .overlay').click(function () {
+                            $('.subs_modal, .overlay').removeClass("active");
+                        });
+    
+                        //무료 구독창 클리 시 완료 문구 및 마이페이지로 이동 
+                        document.getElementById("subscribe-link").addEventListener("click", function (event) {
+                            event.preventDefault(); // 링크의 기본 동작 중단
+                            alert("구독이 완료되었습니다! Basic 회원이 되신 걸 축하드립니다!"); // 알림창 표시
+                            window.location.href = "http://localhost:3003/mypage"; // 주소로 이동
+                        });
+    
+                        document.getElementById("mypage_btn_open").addEventListener("click", function (event) {
+                            window.location.href = "http://localhost:3003/mypage"; // 주소로 이동
+                        });
+        </script> -->
+</body>
+</html>

@@ -1,0 +1,1172 @@
+/* 230804_정은우_mainPage css */
+/* body안의 width를 vw로 할 경우, 스크롤 등 부가요소에
+ 관계없이 무조건 화면의 해상도 값을 가져오므로 가로 스크롤이 생긴다. */
+
+/* 로고 폰트 */
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*  */
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* 코딩 코드 폰트 */
+@font-face {
+    font-family: 'intelone-mono-font-family-regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/intelone-mono-font-family-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.notosanskr * {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* main CSS 시작 */
+/* body 마진 값 0 / 배경 색 설정(1B3455) / 폰트 설정*/
+body {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #1B3455;
+    color: white;
+    overflow-y: scroll;
+}
+
+body.day {
+    color: #212121 ;
+    background-color: white;
+}
+
+/* 스크롤바 안보이게 ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+/* main 버튼 스타일 지정 */
+#main_btnWrap {
+    display: flex;
+    flex-direction: row;
+
+}
+
+/* main 페이지 로그인버튼 스타일 지정 */
+/* transparent 는 투명을 의미한다. */
+.main_signupBtn {
+    box-sizing: border-box;
+    appearance: none;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    margin: 0 12px 0 0;
+    padding: 8px 16px 8px 16px;
+
+    border: none;
+    /* border: 1px solid white; */
+    border-radius: 12px;
+    background-color: transparent;
+
+    font-size: 1rem;
+    font-weight: 400;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: white;
+
+    transition: 0.3s;
+    min-width: 100px;
+}
+
+.main_signupBtn:hover {
+    background-color: #3e3e3e;
+    /* background-color: white; */
+    /* color: #212121; */
+    /* font-weight: 700; */
+}
+
+/* main 페이지 회원가입 버튼 스타일 지정 */
+/* transparent 는 투명을 의미한다. */
+.main_loginBtn {
+    all: unset;
+    box-sizing: border-box;
+    appearance: none;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    margin: 16px 12px 16px 0;
+    padding: 8px 16px 8px 16px;
+
+    /* border: 1px solid white;
+    border-radius: 30px; */
+    background-color: transparent;
+
+    font-size: 1rem;
+    font-weight: 400;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+
+    transition: 0.3s;
+}
+
+.main_loginBtn:hover {
+    /* background-color: #212121; */
+    color: white;
+}
+
+/* main페이지 전체 크기 및 기본 설정 지정 */
+
+#main_container {
+    box-sizing: border-box;
+    /* width: 100vw; */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Noto Sans KR', 'GmarketSansMedium';
+    text-align: center;
+    flex: 1 0 auto;
+
+}
+
+/* 네비게이션 바 설정 */
+#main_navbar {
+    height: 58px;
+    width: 100%;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    position: fixed;
+
+    display: flex;
+    flex: 2 1 0;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFFFFF;
+    background-color: #212121;
+    font-family: 'Noto Sans KR';
+    font-size: 14px;
+
+    z-index: 10;
+}
+
+/* 모달 팝업을 감싸고 있는 최상위 부모 */
+#main_modalWrap {
+    display: none;
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 7rem;
+    /*Location of the box*/
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* 모달 팝업창 */
+#main_modalBody {
+    width: 500px;
+    height: 600px;
+    padding: 30px 30px;
+    margin: 0 auto;
+    border: 1px solid #777;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+/* 닫기 버튼 */
+#main_closeBtn {
+    float: right;
+    font-weight: bold;
+    color: #777;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* 메인  */
+
+/* 네비게이션 요소 구현 */
+/* 네비게이션 왼쪽 요소 시작 */
+.main_navLeft {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 12px
+}
+
+.main_navMiddle {
+    margin-left: 24px;
+    overflow: hidden;
+}
+
+.main_navMiddle>div {
+    opacity: 0;
+    animation: main_navMiddle_fadeOut 1s linear infinite;
+    /* Pause the animation */
+    animation-play-state: paused;
+    /* Bind the animation to scroll */
+    animation-delay: calc(var(--scroll) * -1s);
+    /* These last 2 properites clean up overshoot weirdness */
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+
+@keyframes main_navMiddle_fadeOut {
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+.main_nav_logo {
+    font-weight: 1000;
+    font-size: large;
+    margin-left: 24px;
+    font-style: italic
+}
+
+/* 네비게이션 왼쪽 요소 끝 */
+
+/* 네비게이션 검색창 시작 */
+#main_navSearchbar {
+    height: 34px;
+    width: 300px;
+    display: flex;
+    padding-left: 12px;
+    /* 문제 창 애니메이션 CSS */
+    /* 애니메이션(좌->우)를 위한 position */
+    /* transform: translateX(-100%);
+    transition: transform 1s;
+    visibility: hidden; */
+    transition: opacity(0);
+    animation: FadeIn 1s linear infinite;
+    /* Pause the animation */
+    animation-play-state: paused;
+    /* Bind the animation to scroll */
+    animation-delay: calc(var(--scroll) * -1s);
+    /* These last 2 properites clean up overshoot weirdness */
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+
+@keyframes FadeIn {
+    to {
+        transform: opacity(100);
+    }
+}
+
+#main_navSearchbar>.main_search_button {
+    padding-right: 8px;
+    background-color: transparent;
+}
+
+#main_navSearchbar>input {
+    font-size: 0.8rem;
+    height: 32px;
+}
+
+/* 네비게이션 검색창 끝 */
+
+/* 네비게이션 오른쪽 요소 시작 */
+.main_navRight {
+    height: 100%;
+    display: flex;
+    align-items: center
+}
+.main_navRight>input{
+    all:unset;
+    position: relative;
+    width: 200px;
+    height: 25px;
+    /* background-color: red; */
+    z-index: 2;
+    right: -230px;
+    transform: translateY(0);
+}
+.main_navRight>ul {
+    float: left;
+    margin: 0;
+}
+
+.main_navRight>ul>li {
+    list-style-type: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.main_navRight>ul>:first-child {
+    color: #d2d2d2;
+    padding-right: 6px;
+}
+
+.main_navRight>ul>:nth-child(2) {
+    color: #ffffff;
+    padding-right: 6px;
+}
+
+/* 낮/밤 모드 전환 버튼 CSS 시작*/
+.checkbox-wrapper-2{
+    margin: 7px 15px 0 0;
+}
+.checkbox-wrapper-2 .ikxBAC {
+    appearance: none;
+    background-color: #dfe1e4;
+    border-radius: 72px;
+    border-style: none;
+    flex-shrink: 0;
+    height: 20px;
+    margin: 0;
+    position: relative;
+    width: 30px;
+}
+
+.checkbox-wrapper-2 .ikxBAC::before {
+    bottom: -6px;
+    content: "";
+    left: -6px;
+    position: absolute;
+    right: -6px;
+    top: -6px;
+}
+
+.checkbox-wrapper-2 .ikxBAC,
+.checkbox-wrapper-2 .ikxBAC::after {
+    transition: all 100ms ease-out;
+}
+
+.checkbox-wrapper-2 .ikxBAC::after {
+    background-color: #fff;
+    border-radius: 50%;
+    content: "";
+    height: 14px;
+    left: 3px;
+    position: absolute;
+    top: 3px;
+    width: 14px;
+}
+
+.checkbox-wrapper-2{
+    margin: 7px 15px 0 0;
+}
+.checkbox-wrapper-2 input[type=checkbox] {
+    cursor: default;
+}
+
+.checkbox-wrapper-2 .ikxBAC:hover {
+    background-color: #c9cbcd;
+    transition-duration: 0s;
+}
+
+.checkbox-wrapper-2 .ikxBAC:checked {
+    background-color: #8CA9BF;
+    /* background-color: #6e79d6; */
+}
+
+.checkbox-wrapper-2 .ikxBAC:checked::after {
+    background-color: #fff;
+    left: 13px;
+}
+
+.checkbox-wrapper-2 :focus:not(.focus-visible) {
+    outline: 0;
+}
+
+.checkbox-wrapper-2 .ikxBAC:checked:hover {
+    background-color: #60788b;
+    /* background-color: #535db3; */
+}
+
+/* 낮/밤 모드 전환 버튼 CSS 끝 */
+
+.main_popularSerch {
+    box-sizing: border-box;
+    padding-right: 32px;
+    min-width: 250px;
+    cursor: pointer;
+}
+#main_popularSerchModal{
+    background-color: white;
+    color: #212121;
+    position: absolute;
+    min-width: 200px;
+    padding: 8px;
+    padding-bottom: 12px;
+    top: calc(0% + 58px);
+    right: calc(0% + 200px);
+    font-size: 0.7rem;
+    display: flex;
+    position: fixed;
+    z-index: 9;
+    flex-direction: column;
+    box-sizing: border-box;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;   
+}
+.main_popularSerchModalTransform{
+    transform: translateY(calc(-100% - 10px));
+}
+/* [개선필요]굳이 class를 이렇게까지 나눠서 할 필요는 없음.. */
+#main_DownPopularSerchModalAnimation{
+    /* top: 50%; */
+    animation: TB_yMovement_down 1s ease forwards;
+}
+#main_DownPopularSerchModalAnimation{
+    /* top: 50%; */
+    animation: TB_yMovement_up 1s ease forwards;
+}
+@keyframes TB_yMovement_down {
+    to {
+        transform: translateY(calc(0% + 20px));
+    }
+}
+@keyframes TB_yMovement_up {
+    to {
+        transform: translateY(calc(-100% - 10px));
+    }
+}
+
+#main_popularSerchModal>p{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+}
+#main_popularSerchModal>div{
+    width: 100%;
+    display: flex;
+    margin: 4px 0;
+}
+#main_popularSerchModal>div>div {
+    width: 50%;
+    margin: 0;
+    display: inline-block;
+}
+/* 네비게이션 끝 */
+/* 검색창 시작 */
+/* input, select 클릭시 생기는 기본 테두리 제거 */
+input,
+select:focus {
+    outline: none;
+}
+
+/* select 기본 스타일 제거 */
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* nav제외 나머지 공간 */
+/* main페이지 및 정렬 설정 */
+.main_wrap {
+    width: 100%;
+    /* navbar 세로값 58px을 뺀 나머지 높이 */
+    height: calc(100vh - 58px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* flex: 1 0 auto; */
+    position: relative;
+}
+
+/* 다크모드 */
+.main_wrap_backImg_night {
+    /* 메인페이지 배경 이미지 추가 */
+    background-image: url('/img/NDB_night_BackImg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+/* 라이트모드 */
+.main_wrap_backImg_day {
+    /* 메인페이지 배경 이미지 추가 */
+    background-image: url('/img/NDB_day_BackImg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+/* 위치조정 */
+.main_position {
+    height: 58px;
+}
+
+/* 검색 부분(필터링 및 설명텍스트 등 정렬) */
+.main_NavFlex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main_NavLangDB_Wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main_NavLangDB_Text{
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    margin-bottom: 0;
+}
+.main_NavLangDB_Text label p, .main_NavLangDB_Text p{
+    margin-bottom: 0px;
+}
+.main_searchWrap {
+    /* background-color: red; */
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    width: 650px;
+    height: 500px;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+}
+.main_NavLangDB_Select{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50px;
+    height: 32px;
+    cursor: pointer;
+}
+/* .main_Navwon{
+    width: 14px;
+    height: 14px;
+    background-color: #9FA0A0;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+.main_Navwon:hover{
+    background-color: white;
+    width: 1rem;
+    height: 1rem;
+}
+.main_Navwon:active{
+    background-color: white;
+    width: 1.1rem;
+    height: 1.1rem;
+}
+.main_Navwon_active-color{
+    background-color: white;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+} */
+
+.main_text {
+    /* margin-bottom: 12px; */
+    /* color: white; */
+    font-family: 'Noto Sans KR';
+    font-size: 2rem;
+    margin-bottom: 36px;
+    width: 500px;
+    height: 80px;
+}
+
+.main_text>p {
+    margin: 0;
+}
+
+.main_text>p::after {
+    content: "|";
+    right: 0;
+    color: #aeaeae;
+    animation: caret .8s infinite;
+}
+
+
+@keyframes caret {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* 검색 창 div 기본테마*/
+.main_search_night {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    height: 46px;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+
+.main_search_day {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    height: 46px;
+    border-radius: 30px;
+    border: 1px solid #aeaeae;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+
+.main_search_day:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.main_Nav_search {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 38px;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+
+}
+
+/* 검색창 자동완성 div 검색어 선택시 표시 css */
+.main_autocomplete>div.active {
+    background: #333;
+    color: #eee;
+}
+
+/* 검색창 테두리 제거 */
+.main_language,
+.main_searchBar,
+.main_searchBar2,
+.main_search_button {
+    border: 0;
+    background-color: white;
+}
+
+.main_search_button {
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.main_searchLanguage,
+.main_searchLanguage2 {
+    height: 30px;
+    width: 100px !important;
+    min-width: 100px;
+    border: 0;
+    /* 기본 select 화살표 감추기 */
+    -o-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0 8px 0 8px;
+    padding-left: 12px;
+    /* font-family:'GmarketSansMedium', 'Noto Sans KR'; */
+    background: url('/img/chevron-down-solid.svg') no-repeat 97% 50%/15px auto;
+}
+
+/* 검색 창 바 input */
+.main_searchBar,
+.main_searchBar2 {
+    box-sizing: border-box;
+    width: 70%;
+    height: 41px;
+    font-size: 1rem;
+}
+
+/* 검색 input 클릭시 생기는 테두리 제거 */
+#main_searchBar>input:focus {
+    outline: none;
+}
+
+/* 메인 검색 테두리 제거 */
+#main_searchBar2>input:focus {
+    outline: none;
+}
+
+
+.main_search_button {
+    height: 30px;
+    padding: 0;
+    background-color: transparent;
+    /* margin-left: 8px; */
+}
+
+.main_search_button>i {
+    width: 30px;
+    background-color: transparent;
+}
+
+/* select option 색 변경 시도....ㅜ */
+option:checked,
+option:hover {
+    box-shadow: 0 0 10px 100px #8CA9BF inset;
+}
+
+/* main CSS 끝 */
+/* 
+.
+.
+. 
+*/
+/* codingExam CSS시작 */
+/* codingExam Page 전체 크기 조절 */
+.codeExam_container {
+    width: 100%;
+    height: calc(100vh - 58px);
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    font-family: 'Noto Sans KR', 'GmarketSansMedium';
+    text-align: center;
+    flex: 1 0 auto;
+}
+
+.codeExam_pageWrap {
+    /* background-color: greenyellow; */
+    display: flex;
+    height: 100%;
+    width: 100%;
+    /* flex: 1 0 auto; */
+    /* padding-top: 58px !important; */
+    box-sizing: border-box;
+    overflow: hidden;
+    color: #212121;
+
+
+}
+
+/* 코드 문제 CSS 시작 */
+/* 문제 창 크기 조절 */
+.codeExam_examWrap-Size {
+    height: 100%;
+    width: 45%;
+
+
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    /* 문제 창 애니메이션 CSS */
+    /* 애니메이션(좌->우)를 위한 position */
+    /* transform: translateX(-100%);
+    transition: transform 1s;
+    visibility: hidden; */
+    transform: translateX(-100%);
+    animation: LR_xMovement 1s linear infinite;
+    /* Pause the animation */
+    animation-play-state: paused;
+    /* Bind the animation to scroll */
+    animation-delay: calc(var(--scroll) * -1s);
+    /* These last 2 properites clean up overshoot weirdness */
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+
+@keyframes LR_xMovement {
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+
+.codeExam_examWrap_night {
+    height: 80%;
+    padding: 12px;
+    text-align: left;
+    min-width: 95%;
+
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.codeExam_examContent {
+    padding: 24px;
+    padding-bottom: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* [개선필요]문제 설명 부분만 스크롤 하기 위해 flex로 div별 비율 주려 함 */
+    /* display: flex;
+    flex-direction: column; */
+}
+.codeExam_examContent>h2{
+    text-align: left;
+}
+/* [개선필요]문제 설명 부분만 스크롤 하기 위해 flex로 div별 비율 주려 함 */
+/* .codeExam_examContent:nth-child(1) { flex-grow: 1; }
+.codeExam_examContent:nth-child(2) { flex-grow: 3; } */
+.scrollbar {
+    width: 250px;
+    height: 250px;
+    overflow-y: scroll;
+    /*  */
+}
+
+/* 스크롤바의 폭 너비 */
+.codeExam_examContent::-webkit-scrollbar {
+    width: 5px;
+}
+
+.codeExam_examContent::-webkit-scrollbar-thumb {
+    background: #1B3455;
+    /* 스크롤바 색상 */
+    border-radius: 12px;
+    /* 스크롤바 둥근 테두리 */
+}
+
+.codeExam_examTitle {
+    /* font 속성 */
+    /* font-weight: bold; */
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    min-height: 100px;
+    min-width: 100px;
+}
+.codeExam_examTitle>h2{
+    text-align: left;
+}
+/* 제목 제외 나머지 부분 선택 div CSS */
+.codeExam_examDetailSize{
+    /* height: 100%; */
+    width: 100%;
+}
+
+
+.codeExam_examDetail {
+    padding: 16px 0 16px 0;
+}
+
+/* 문제 설명 CSS */
+.codeExam_examDetail>p:first-child {
+    margin: 0 0 1rem 0;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* 제한 조건 CSS */
+.codeExam_exam {
+    margin-top: 16px;
+}
+
+.codeExam_exam>p:first-child {
+    margin: 0 0 1rem 0;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* 코드+시연 창 크기 조절 */
+.codeExam_code_wrap {
+    display: flex;
+    flex-direction: column;
+    flex-basis: auto;
+    width: 100%;
+    min-width: 300px;
+    box-sizing: border-box;
+    /* padding: 32px 32px; */
+    /* 문제 창 애니메이션 CSS */
+    /* 애니메이션(좌->우)를 위한 position */
+    /* transform: translateX(-100%);
+    transition: transform 1s;
+    visibility: hidden; */
+    transform: translateX(100%);
+    animation: RL_xMovement 1s linear infinite;
+    /* Pause the animation */
+    animation-play-state: paused;
+    /* Bind the animation to scroll */
+    animation-delay: calc(var(--scroll) * -1s);
+    /* These last 2 properites clean up overshoot weirdness */
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+
+@keyframes RL_xMovement {
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* 정답 가리기 기능 */
+.codeExam_code_hide {
+    width: 100%;
+    height: 60%;
+    /* background-color: red; */
+}
+
+/* 예제코드 창 전체 사이즈 조절 */
+.codeExam_boxes {
+    flex-grow: 2;
+    height: 60%;
+    /* background-color: red; */
+
+    box-sizing: border-box;
+    /* padding: 32px 32px 0 32px; */
+    position: relative;
+    overflow: hidden;
+    margin: 32px 32px 16px 32px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+
+
+.codeExam_boxesHide {
+    /* 기존 스타일 */
+    position: absolute;
+    width: calc(100%);
+    height: calc(100%);
+    /* width: calc(100% - 64px);
+    height: calc(100% - 32px); */
+    background-color: #D83B44;
+    z-index: 1;
+    /* margin: 0 32px 32px 0; */
+    border-radius: 12px;
+    box-sizing: border-box;
+
+    /* 애니메이션 추가 */
+    animation: slideEffect 1s forwards;
+}
+
+/* 정답 가리기 드래그앤 드롭이벤트 */
+/* @keyframes slideEffect {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+} */
+
+.codeExam_boxesSize {
+    width: 100%;
+    height: 100%;
+    background-color: #212121;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 1;
+
+}
+
+.codeExam_exambox {
+    border-radius: 12px;
+    width: 33%;
+    height: 100%;
+    background-color: #212121;
+}
+.codeExam_etcBox{
+    width: 100% !important;
+}
+.codeExam_etcBox > .codeExam_codePage{
+    padding: 16px !important;
+}
+/* .codeExam_htmlBox,.codeExam_cssBox{
+    margin-right: 12px;
+} */
+
+/* 결과 시연창 전체 사이즈 조절 */
+.codeExam_resultContainer {
+    height: 45%;
+    flex-grow: 1;
+    box-sizing: border-box;
+    /* padding-top: 16px; */
+    margin: 0 32px 32px 32px;
+    /* overflow-y: scroll; */
+
+}
+
+/* 코드 결과 창 사이즈 조절 */
+.codeExam_resultSize {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 12px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.codeExam_resultSize,
+.codeExam_resultDiv {
+    height: 100%;
+}
+/* 코드 결과창 코드 반영 및 코드 저장 버튼 */
+.codeExam_StartAndSave{
+    display: flex;
+    justify-content: space-between;
+}
+/* 코드예제 실행버튼 CSS */
+.codeExam_StartAndSave>button{
+    all: unset;
+    text-transform:uppercase;
+    margin: 0 8px 8px 0;
+    padding: 8px 12px;
+    border-radius: 16px;
+    background-color: #3e3e3e;
+    color: white;
+    font-size: 0.8rem;
+}
+.codeExam_StartAndSave>button:active{
+    background-color: #212121;
+}
+/* 코딩 예제 save  */
+/* 코드 결과창 스크롤 및 그림자 설정 */
+.codeExam_resultDiv {
+    /* padding: 12px; */
+    /* overflow-y: scroll; */
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.codeExam_resultDiv::-webkit-scrollbar {
+    width: 5px;
+}
+
+.codeExam_resultDiv::-webkit-scrollbar-thumb {
+    background: #1B3455;
+    /* 스크롤바 색상 */
+    border-radius: 12px;
+    /* 스크롤바 둥근 테두리 */
+}
+
+/* 코드 결과창 html데이터 삽입 */
+.codeExam_resultDiv::after {
+    content: attr(data-value);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.codeExam_resultDiv.show::after {
+    opacity: 1;
+}
+/* 시연창 iframe CSS */
+.codeExam_resultDiv>iframe{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow-y: scroll;
+}
+
+/* 코드 언어별 창 디자인 */
+.codeExam_codePage {
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* 코드창 코드 언어 사이즈 */
+.codeExam_codeLanguage {
+    /* border-bottom: solid 1px rgb(57, 57, 57); */
+    padding-bottom: 16px;
+    margin: 0 32px;
+
+    color: white;
+    font-weight: 600;
+
+}
+
+.codeExam_codeContent-Size {
+    width: 100%;
+    height: calc(100% - 32px);
+    /* background-color: red; */
+    box-sizing: border-box;
+    border-radius: 12px;
+    text-align: left;
+    color: white;
+}
+
+/* 코드 출력(시연X)창 크기조절 */
+#css-box>div,
+#html-box>div {
+    box-sizing: border-box;
+    padding: 16px 0 16px 16px;
+}
+
+/* 제일 오른쪽 박스 padding 따로 지정 */
+#js-box>div {
+    box-sizing: border-box;
+    padding: 16px;
+}
+
+.codeExam_codeContent {
+    width: 100%;
+    height: 100%;
+    background-color: #363636;
+    box-sizing: border-box;
+    padding: 8px;
+
+    border-radius: 12px;
+}
+
+.codeExam_codeContent textarea {
+    width: 100%;
+    height: 100%;
+    background-color: #363636;
+    color: white;
+    font-size: 9px;
+    padding: 0;
+    width: 100%;
+    /* 전체 너비를 채우기 위해 */
+    box-sizing: border-box;
+    /* 패딩과 테두리 포함한 전체 크기 유지 */
+    white-space: pre-wrap;
+    /* 줄바꿈과 공백 유지 */
+    overflow-y: auto;
+    /* 스크롤바 표시 */
+    border: none;
+    resize: none;
+    overflow-y: scroll;
+    font-family: 'intelone-mono-font-family-regular';
+}
+
+/* 코드 창 스크롤바 안보이게 */
+.codeExam_codeContent textarea::-webkit-scrollbar {
+    display: none;
+}
+
+
+.main_floating_font{
+    z-index: -999;
+    width: 100%;
+    height: 100%;
+    color:#92b8b1;
+    opacity: 0.2;
+    font-size:20px;
+
+}
+
+
+.main_floating_p{
+    margin-top: 0;
+    margin-bottom: 2px;
+}

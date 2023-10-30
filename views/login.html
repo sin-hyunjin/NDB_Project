@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- content에 자신의 OAuth2.0 클라이언트ID를 넣습니다. -->
+    <meta
+      name="google-signin-client_id"
+      content="387069556796-6pf36ar41vvsqpe538bao9sco8uss32n.apps.googleusercontent.com"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- /css/login.css로 요청하면 public/css/login.css 파일이 클라이언트에게 제공 -->
+    <link rel="stylesheet" href="/css/login.css" />
+    <link
+      rel="shortcut icon"
+      sizes="16x16 32x32 64x64"
+      href="/img/NDBlogo.png"
+    />
+    <title>NSB 코딩예제사이트</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+      .password_span {
+        color: brown;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 회원가입과 로그인을 포함한 두 개의 폼이 있는 컨테이너 -->
+    <div id="back_container" class="back_container">
+      <!-- 내비게이션  -->
+      <nav id="navbar">
+        <div class="navLeft">
+          <div class="hamburger"></div>
+          <div class="nav_logo">
+            <a href="http://localhost:3003/index" class="nav-ndb">NDB</a>
+          </div>
+        </div>
+        <div class="navRight">
+          <!-- <ul class="popularSerch">
+            <li>
+              <span>인기 검색어</span>
+            </li>
+            <li>|</li>
+            <li>
+              <a href="#">파이썬 반복문</a>
+            </li>
+          </ul> -->
+          <div>
+            <form action="#">
+              <button type="submit" class="nav_login_button">Login</button>
+            </form>
+          </div>
+          <div>
+            <form action="/join">
+              <button type="submit" class="nav_join_button">Join</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <h1 class="h1">LOGIN to NDB</h1>
+      <div class="white"></div>
+      <!-- 로그인 컨테이너  -->
+      <div class="login_container">
+        <form action="/index" id="login-form" class="login_form" method="post">
+          <p>이메일</p>
+          <input
+            type="email"
+            id="email"
+            class="login_input"
+            name="email"
+            required
+          />
+          <p>비밀번호</p>
+          <input
+            type="password"
+            id="password"
+            class="login_input"
+            name="password"
+            required
+          />
+          <span id="error-message" class="password_span hidden"
+            >이메일 및 비밀번호를 확인하세요.</span
+          >
+          <button type="submit" id="login-button" class="login_button">
+            로그인
+          </button>
+        </form>
+        <!-- 계정찾기 -->
+        <div class="find_text">
+          <a href="#" class="find_email find"><span> 이메일</span> </a>
+          <span>∞</span>
+          <a href="#" class="find_pass find"> <span> 비밀번호 찾기</span></a>
+          <a href="/join" class="find_join find"><span>회원가입</span></a>
+        </div>
+      </div>
+      <!-- -------   하단선 ----------------- -->
+      <hr class="hr_left" />
+      <span class="sns_span">간편로그인</span>
+      <hr class="hr_right" />
+
+      <!-- 소셜로그인 버튼 -->
+      <div class="sns_login_div">
+        <!-- 구글로그인 -->
+        <form action="/auth/google" class="sns_form">
+          <button id="google_button" class="google_button sns_button"></button>
+        </form>
+        <!-- 카카오 로그인 -->
+        <form action="/auth/kakao" class="sns_form">
+          <button class="kakao_button sns_button"></button>
+        </form>
+        <!-- 깃허브 로그인 -->
+        <form action="/auth/github" class="sns_form">
+          <button class="git_button sns_button"></button>
+        </form>
+      </div>
+      <!-- 하단 NSB 소개단  -->
+      <footer>
+        <p>
+          Created with <i class="fa fa-heart"></i> by
+          <a
+            target="_blank"
+            href="https://www.notion.so/NSD-_NDB-3e67330ff9764a33a959d728dfd35c1c"
+            >순두부아니다</a
+          >
+          <!-- - 이 작품과 함께한 동안 어떻게 만들었는지 그리고 도전에 참여하는 방법에 -->
+          <!-- 대해 -->- 인공지능사관학교 순두부들에 대해 알고 싶다면
+          <a
+            target="_blank"
+            href="https://www.notion.so/NSD-_NDB-3e67330ff9764a33a959d728dfd35c1c"
+            >여기</a
+          >에서 읽어보세요.
+        </p>
+      </footer>
+    </div>
+    <!-- <script src="/js/login.js"></script> -->
+    <script>
+      // 현재 저장된 모든 쿠키 가져오기
+      function getAllCookies() {
+        const cookies = document.cookie;
+        return cookies;
+      }
+
+      // 특정 쿠키 값 가져오기
+      function getCookie(cookieName) {
+        const name = cookieName + "=";
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookieArray = decodedCookie.split(";");
+
+        for (let i = 0; i < cookieArray.length; i++) {
+          let cookie = cookieArray[i].trim();
+          if (cookie.indexOf(name) === 0) {
+            return cookie.substring(name.length, cookie.length);
+          }
+        }
+
+        return null;
+      }
+
+      // 사용 예시
+      const allCookies = getAllCookies();
+      console.log("All Cookies:", allCookies);
+
+      const specificCookieValue = getCookie("your_cookie_name");
+      console.log("Specific Cookie Value:", specificCookieValue);
+    </script>
+  </body>
+</html>

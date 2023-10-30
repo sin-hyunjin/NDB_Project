@@ -1,0 +1,292 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.code-output {
+    display: inline-flex;
+}
+.language-name {
+    font-weight: bold;
+    color: #ff4500;
+    margin-top: 5px;
+}
+
+/* 챗봇 컨테이너 */
+.chat-container {
+    color: black;
+    z-index: 1;
+    font-family: 'Noto Sans KR','GmarketSansMedium';
+    position: fixed; /* 화면에 고정되도록 설정 */
+    bottom: -15px;
+    right: -15px;
+    width: 350px;
+    background-color: #8CA9BF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    display: none; /* 처음에 숨김 */
+    transition: all 0.3s ease;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    border: #212121;
+    
+}
+/*
+/* 챗봇 헤더 */
+
+
+/* 챗봇 몸체 */
+.chat-body {
+    overflow-x: hidden;
+   height: 400px;
+    padding: 30px;
+    max-height: 400px;
+    overflow-y: auto;
+
+}
+.scrollbar {
+    width: 250px;
+    height: 250px;
+    overflow-y: scroll;
+    /*  */
+}
+/* 스크롤바의 폭 너비 */
+.chat-body ::-webkit-scrollbar {
+    width: 5px;
+}
+
+.chat-body ::-webkit-scrollbar-thumb {
+    background: #1B3455;
+    /* 스크롤바 색상 */
+    border-radius: 12px;
+    /* 스크롤바 둥근 테두리 */
+}
+/* 인사박스 */
+.button-container{
+    font-size: 24px;
+    margin: 20px;
+    padding:20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+    font-weight: bolder;
+   
+} 
+/* 질문하기버튼,별점버튼 */
+.button-container button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #1B3455;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+/* 대화 메시지 스타일 */
+.message {
+    font-family: 'NanumSquare', sans-serif;
+    display: inline-block; /* 인라인 블록으로 설정하여 내용만큼만 영역 차지 */
+    margin: 10px 0;
+    padding: 11px;
+    border-radius: 8px;
+}
+.chat-header {
+    background-color: #212121;
+    color: #ffffff;
+    padding: 15px;
+    padding-top: 25px;
+    display: flex;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
+    justify-content: space-between;
+}
+
+.header-title {
+    order: 3; /* 맨 오른쪽으로 변경 */
+    cursor: pointer;
+}
+
+#back-button {
+    order: 1; /* 맨 왼쪽으로 유지 */
+    border: none; 
+    font-size: 15px;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.chat-logo {
+    margin-right: auto;
+    order: 2; /* back-button 바로 오른쪽으로 위치 */
+}
+/* 사용자 메시지 스타일 */
+.user-message {
+    background-color: #FFFFFF;
+    color: #1B3455;
+    text-align: inherit;
+
+    float: right;
+    max-width: 95%;
+    word-break: break-all;
+
+}
+
+/* 챗봇 메시지 스타일 */
+.bot-message {
+    
+    background-color: #d0dee9;
+    color: #212121;
+}
+
+/* 메시지 앞에 사용자와 챗봇 구분 아이콘 */
+.user-message .content::before {
+    content: "> ";
+    font-weight: bold;
+}
+
+.bot-message .content::before {
+    content: "NDB: ";
+    font-weight: bold;
+}
+
+/* 챗봇 입력창 */
+.chat-input {
+
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+
+    width: 70%;
+}
+
+.chat-input button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #D83B44;
+ 
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: bold;
+    width: 22%;
+}
+
+.chat-input button:hover {
+    background-color: #8CA9BF;
+}
+
+/* 챗봇 열기/닫기 버튼 스타일 */
+.chat-toggle-button {
+    z-index: 1;
+    position: fixed; /* 화면에 고정되도록 설정 */
+    bottom: -15px;
+    right: -15px;
+    width: 80px;
+    height: 80px;
+    background-color: #8CA9BF;
+    color: #ffffff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 40px;
+    margin-bottom: 40px;
+
+}
+
+.chat-toggle-button:hover {
+    background-color: #D83B44;
+}
+
+/* 챗봇 컨테이너가 열렸을 때 보이도록 설정 */
+.chat-container.open {
+    display: block;
+}
+#myform {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 100%;  /* 폼의 가로 크기 설정 */
+height: 100%;  /* 폼의 세로 크기 설정 */
+overflow: auto;  /* 내용이 폼의 크기를 넘어갈 때 스크롤바 보이기 */
+}
+#myform div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#myform fieldset{
+    display:block;
+    direction: rtl;
+   text-align: center;
+    border:0;
+}
+#myform fieldset legend{
+    text-align: center;
+    padding: 8px;
+}
+#myform input[type=radio]{
+    display: none;
+}
+#myform label{
+    font-size: 3em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+#myform label:hover{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform label:hover ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#reviewContents {
+    width:330px;
+    height: 100px;
+    padding: 10px;
+    margin: 10px;
+    
+    box-sizing: border-box;
+    border: solid 1.5px #000000;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+}
+.text-bold{
+    padding: 0px;
+    margin: 8px;
+}
+.rievewbutton[type=submit] {
+    background-color: #008CBA; 
+    width: 30%; 
+    border: none; 
+    color: white; 
+    padding: 5px; 
+    text-align: center; /* 버튼텍스트를 중앙에 배치 */
+    text-decoration: none; 
+    font-size: 12px;
+    margin: 0px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+}
+
+.rievewbutton[type=submit]:hover {
+    background-color: #4CAF50; 
+    color: black; 
+}

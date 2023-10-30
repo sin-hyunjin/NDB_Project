@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "highlight.js": "^11.8.0",
+    "jquery": "^3.7.0",
+    "mysql2": "^3.5.2",
+    "nodemon": "^3.0.1",
+    "nunjucks": "^3.2.4",
+    "passport": "^0.6.0",
+    "passport-github2": "^0.1.12",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-kakao": "^1.0.1"
+  },
+  "name": "express",
+  "description": "순두부 아니다 팀협업 테스트",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NSB_Project",
+  "license": "ISC"
+}

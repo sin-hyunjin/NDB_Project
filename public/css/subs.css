@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap');
+
+
+/* -------------구독모달창---------------- */
+.subs_body {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.7em;
+}
+
+.subs_modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+    z-index: 1001;
+    display: none;
+}
+
+.subs_modal.active {
+    display: block;
+}
+
+
+.subs_modal_content{
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.247);
+    width: 834px;
+    overflow: hidden;
+    background-color: #1B3455;
+}
+
+.subs_button_close {
+    position: absolute;
+    top: -2px;
+    right: 3px;
+    background-color: transparent;
+    border: none;
+    outline:none;
+    color: #ccc;
+    font-size: 18px;
+}
+.subs_button_close:hover {
+    color: #8CA9BF;
+}
+
+.subs_header{
+    font-size:larger;
+    text-align: center;
+    display:absolute;
+    color: #FFFFFF;
+}
+#subs_title{
+    font-size: 55px;
+    margin-bottom:25px;
+    margin-top:23px;
+}
+.subs_subtitle{
+    font-weight: 35vw;
+    font-size:20px;
+    margin-top:-8px;
+    margin-bottom: 14px;
+}
+
+
+h1{
+    font-size:57px;
+
+}
+h2,h3{
+    text-align: center;
+    font-size:30px;
+    color:black;
+}
+.subs_btn_open{ 
+    font-size: 15px;
+    /* border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial; 
+    display:inline-block;*/
+}
+
+.subs_desc_content{
+    display:flex;
+    justify-content: center;
+}
+
+
+.content-box > button{
+    
+    width : 60px;
+    
+}
+.content-box{
+    width:33%;
+    height:200%;
+    border-radius: 12px;
+    background-color: #8CA9BF;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    
+
+}
+.subs_benefit{
+    margin-left:-13px;
+    font-size:16px;
+    color:black;
+}    
+.subs_price{
+    text-align: center;
+    margin: -22px 0 9px 0;
+    font-size:22px;
+    font-weight:bold;
+    display:flex;
+    justify-content: center;
+}    
+.subs_li{
+    list-style-type:none;
+    padding-left: 45px;
+
+}
+
+.content3{
+    margin-right:20px;
+}
+
+.content1:hover{
+    background-color:#FFFFFF;
+    transform:  scale(1.1, 1.05) ;
+
+}
+.content2:hover{
+    background-color:#FFFFFF;
+    transform:  scale(1.1, 1.05) ;
+}
+.content3:hover{
+    background-color:#FFFFFF;
+    transform:  scale(1.1, 1.05) ;
+}
+
+
+
+.subs_desc_content input[type=email] {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 7px;
+    outline: none;
+    border: 1px solid #ccc;
+   
+}
+.subs_desc_content input[type=email]::placeholder {
+    color: #ccc;
+}
+.subs_desc_content input[type=email]:focus::placeholder{
+    opacity: 0;
+}
+.subs_desc_content button {
+    display:flex;
+    /* margin-left:50px; */
+    padding: 7px;
+    background-color: rgb(212, 69, 97);
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    width: 122px;
+    font-size:16px;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.subs_btn{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 18px;
+    margin-top: 23px;
+}
+
+.subs_desc_content button:hover {
+    background-color: rgb(211, 22, 60);
+}
+.overlay {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.315);
+    display: none;
+    transition: 0.3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    visibility: hidden;
+    /* z-index: 9998; */
+}
+
+.overlay.active {
+    display: block;
+    visibility: visible;
+}
+
+
+@media (max-width:768px) {
+    .subs_modal_content {
+        flex-direction: column;
+        width: 360px;
+    }
+    .photo {
+        flex-basis: 250px; 
+    }
+}
