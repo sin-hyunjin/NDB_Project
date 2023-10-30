@@ -67,3 +67,10 @@
 
 
 ```
+# 로그인 페이지 
+
+<img width="1439" alt="image" src="https://github.com/sin-hyunjin/CodingTest_in_progress/assets/116487398/c8b5cd8d-1c1e-4b8d-990b-8eb28f60e940">
+
+# 회원가입 페이지 
+
+<img width="1438" alt="image" src="https://github.com/sin-hyunjin/CodingTest_in_progress/assets/116487398/e0245f53-9623-4554-a0bd-4a0692ef0617">
