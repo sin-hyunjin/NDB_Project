@@ -561,7 +561,7 @@ function ex_1() {
   if (find_keywords.length == 1) {
     // 찾은 키워드가 1개일때
     $.ajax({
-      url: "/index/ex_1",
+      url: "/home/ex_1",
       method: "POST",
       data: {
         // 서버에 보낼 데이터
@@ -584,7 +584,7 @@ function ex_1() {
   if (find_keywords.length == 2) {
     // 찾은 키워드가 2개일때
     $.ajax({
-      url: "/index/ex_2", //
+      url: "/home/ex_2", //
       method: "POST",
       data: {
         // 서버에 보낼 데이터
@@ -629,7 +629,7 @@ function response_DB() {
   let jsTextarea = document.getElementById("editing_code_Js");
   // textarea의 id가 editing_code_html임
   let codeTextarea = document.getElementById("editing_code_html");
-  // index.html 요소 선택
+  // home.html 요소 선택
   var main_searchLanguage2 = document.querySelector(".main_searchLanguage2");
   var main_selectLanguage2 =
     main_searchLanguage2.options[main_searchLanguage2.selectedIndex].value;
@@ -648,7 +648,7 @@ function response_DB() {
     // sessionStorage.setItem('codeExam', JSON.stringify(codeData));
     // retrievedData = JSON.parse(sessionStorage.getItem('codeExam'));
     // console.log(retrievedData);
-    // index.html에 내용 삽입
+    // home.html에 내용 삽입
     htmlTextarea.innerText = responseVal.EXAM_HTML;
     cssTextarea.innerText = responseVal.EXAM_CSS;
     jsTextarea.innerText = responseVal.EXAM_JS;
@@ -743,10 +743,10 @@ function response_API() {
   let jsTextarea = document.getElementById("editing_code_Js");
   // textarea의 id가 editing_code_html임
   let codeTextarea = document.getElementById("editing_code_html");
-  // index.html 요소 선택
+  // home.html 요소 선택
   var main_searchLanguage2 = document.querySelector(".main_searchLanguage2");
   var main_selectLanguage2 =
-    main_searchLanguage2.options[main_searchLanguage2.selectedIndex].value;
+    main_searchLanguage2.options[main_searchLanguage2.selectedhome].value;
 
   // 왼쪽 문제 이름 / 문제 설명 창 내용 삽입
   examName.innerText = `${responseVal.EXAM_LANGUAGE}, ${responseVal.SEARCH_WORD}`;
@@ -766,7 +766,7 @@ function response_API() {
     sessionStorage.setItem("codeExam", JSON.stringify(codeData));
     retrievedData = JSON.parse(sessionStorage.getItem("codeExam"));
     console.log(retrievedData);
-    // index.html에 내용 삽입
+    // home.html에 내용 삽입
     htmlTextarea.innerText = responseVal.EXAM_HTML;
     cssTextarea.innerText = responseVal.EXAM_CSS;
     jsTextarea.innerText = responseVal.EXAM_JS;
@@ -865,7 +865,7 @@ function loadTextareaContentIntoIframe() {
   const iframeDocument =
     iframe.contentDocument || iframe.contentWindow.document;
 
-  // index.html 요소 선택
+  // home.html 요소 선택
   var main_searchLanguage2 = document.querySelector(".main_searchLanguage2");
   var main_selectLanguage2 =
     main_searchLanguage2.options[main_searchLanguage2.selectedIndex].value;
@@ -1019,12 +1019,13 @@ function select() {
   }
 }
 // 548~ 끝까지 api응답 코드
-function front() {   // select option이 html,css,js일때 api html,css,js코드 응답함수
-    const api_key = "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"
-    let keywords = document.getElementsByClassName('main_searchBar')[0]
-    let user_input = keywords.value;
-    let keywords2 = document.getElementsByClassName('main_searchBar2')[0]
-    let user_input2 = keywords2.value
+function front() {
+  // select option이 html,css,js일때 api html,css,js코드 응답함수
+  const api_key = "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";
+  let keywords = document.getElementsByClassName("main_searchBar")[0];
+  let user_input = keywords.value;
+  let keywords2 = document.getElementsByClassName("main_searchBar2")[0];
+  let user_input2 = keywords2.value;
 
   console.log("상단 바 사용자 입력 :", user_input);
   console.log("메인 검색바 사용자 입력 :", user_input2);
@@ -1172,7 +1173,7 @@ function front() {   // select option이 html,css,js일때 api html,css,js코드
     console.log(pre);
 
     $.ajax({
-      url: "/index/frontinput", // Update this to the URL of your server endpoint
+      url: "/home/frontinput", // Update this to the URL of your server endpoint
       method: "POST",
       data: {
         f_text: f_text,
@@ -1203,13 +1204,13 @@ function front() {   // select option이 html,css,js일때 api html,css,js코드
 }
 
 function java() {
-    // select option이 java일때 api java 응답함수
-    // api key
-    const api_key = "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"; // api key 값
-    let keywords = document.getElementsByClassName("main_searchBar")[0];
-    let user_input = keywords.value;
-    let keywords2 = document.getElementsByClassName("main_searchBar2")[0];
-    let user_input2 = keywords2.value;
+  // select option이 java일때 api java 응답함수
+  // api key
+  const api_key = "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"; // api key 값
+  let keywords = document.getElementsByClassName("main_searchBar")[0];
+  let user_input = keywords.value;
+  let keywords2 = document.getElementsByClassName("main_searchBar2")[0];
+  let user_input2 = keywords2.value;
 
   console.log("상단 바 사용자 입력 :", user_input);
   console.log("메인 검색바 사용자 입력 :", user_input2);
@@ -1322,7 +1323,7 @@ function java() {
     console.log(pre);
     //result.appendChild(pre)
     $.ajax({
-      url: "/index/java_input", // Update this to the URL of your server endpoint
+      url: "/home/java_input", // Update this to the URL of your server endpoint
       method: "POST",
       data: {
         // 서버에 데이터 전송
@@ -1350,13 +1351,13 @@ function java() {
 }
 
 function python() {
-    // select option이 python일때 api python 응답함수
-    // api key
-    const api_key = "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"; // api key 값
-    let keywords = document.getElementsByClassName("main_searchBar")[0];
-    let user_input = keywords.value;
-    let keywords2 = document.getElementsByClassName("main_searchBar2")[0];
-    let user_input2 = keywords2.value;
+  // select option이 python일때 api python 응답함수
+  // api key
+  const api_key = "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"; // api key 값
+  let keywords = document.getElementsByClassName("main_searchBar")[0];
+  let user_input = keywords.value;
+  let keywords2 = document.getElementsByClassName("main_searchBar2")[0];
+  let user_input2 = keywords2.value;
 
   console.log("상단 바 사용자 입력 :", user_input);
   console.log("메인 검색바 사용자 입력 :", user_input2);
@@ -1467,7 +1468,7 @@ function python() {
     console.log(pre);
     //result.appendChild(pre)
     $.ajax({
-      url: "/index/python_input", // Update this to the URL of your server endpoint
+      url: "/home/python_input", // Update this to the URL of your server endpoint
       method: "POST",
       data: {
         // 서버에 데이터 전송
@@ -1494,13 +1495,13 @@ function python() {
 }
 
 function C_programing() {
-    // select option이 python일때 api python 응답함수
-    // api Key
-    const api_key = "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"; // api key 값
-    let keywords = document.getElementsByClassName("main_searchBar")[0];
-    let user_input = keywords.value;
-    let keywords2 = document.getElementsByClassName("main_searchBar2")[0];
-    let user_input2 = keywords2.value;
+  // select option이 python일때 api python 응답함수
+  // api Key
+  const api_key = "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"; // api key 값
+  let keywords = document.getElementsByClassName("main_searchBar")[0];
+  let user_input = keywords.value;
+  let keywords2 = document.getElementsByClassName("main_searchBar2")[0];
+  let user_input2 = keywords2.value;
 
   console.log("상단 바 사용자 입력 :", user_input);
   console.log("메인 검색바 사용자 입력 :", user_input2);
@@ -1611,7 +1612,7 @@ function C_programing() {
     console.log(pre);
     //result.appendChild(pre)
     $.ajax({
-      url: "/index/c_input", // Update this to the URL of your server endpoint
+      url: "/home/c_input", // Update this to the URL of your server endpoint
       method: "POST",
       data: {
         // 서버에 데이터 전송

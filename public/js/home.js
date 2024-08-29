@@ -260,7 +260,7 @@ function front() {
     console.log(pre);
 
     $.ajax({
-      url: "/index/frontinput", // Update this to the URL of your server endpoint
+      url: "/home/frontinput", // Update this to the URL of your server endpoint
       method: "POST",
       data: {
         f_text: f_text,
@@ -401,7 +401,7 @@ function java() {
     console.log(pre);
     //result.appendChild(pre)
     $.ajax({
-      url: "/index/java_input", // Update this to the URL of your server endpoint
+      url: "/home/java_input", // Update this to the URL of your server endpoint
       method: "POST",
       data: {
         // 서버에 데이터 전송
@@ -538,7 +538,7 @@ function python() {
     console.log(pre);
     //result.appendChild(pre)
     $.ajax({
-      url: "/index/python_input", // Update this to the URL of your server endpoint
+      url: "/home/python_input", // Update this to the URL of your server endpoint
       method: "POST",
       data: {
         // 서버에 데이터 전송
@@ -675,7 +675,7 @@ function C_programing() {
     console.log(pre);
     //result.appendChild(pre)
     $.ajax({
-      url: "/index/c_input", // Update this to the URL of your server endpoint
+      url: "/home/c_input", // Update this to the URL of your server endpoint
       method: "POST",
       data: {
         // 서버에 데이터 전송

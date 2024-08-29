@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Review Note</title>
-    <link rel="stylesheet" type="text/css" href="/css/eunwoo_codeExam.css">
-    <link rel="stylesheet" type="text/css" href="/css/eunwoo_style.css">
+    <link rel="stylesheet" type="text/css" href="/css/eunwoo_codeExam.css" />
+    <link rel="stylesheet" type="text/css" href="/css/eunwoo_style.css" />
     <script src="/js/eunwoo_codeExam.js"></script>
-    <script src="/js/index.js"></script>
-</head>
-<body>
+    <script src="/js/home.js"></script>
+  </head>
+  <body>
     <div class="main_Line"></div>
     <!-- 예제 출력 페이지 -->
     <div class="codeExam_container">
-        <div class="codeExam_pageWrap">
-            <!-- 예제 문제 설명 출력 -->
-            <div class="codeExam_examWrap-Size">
-                <div class="codeExam_examWrap_night">
-
-                    <div class="codeExam_examContent">
-                        <h2>최댓값과 최솟값</h2>
-                        <hr>
-                        <div class="codeExam_examDetail">
-                            <p>문제 설명</p>
-                            문자열 s에는 공백으로 구분된 숫자들이 저장되어 있습니다. str에 나타나는 숫자 중 최소값과 최대값을 찾아 이를 "(최소값) (최대값)"형태의 문자열을
-                            반환하는
-                            함수,
-                            solution을 완성하세요.
-                            예를들어 s가 "1 2 3 4"라면 "1 4"를 리턴하고, "-1 -2 -3 -4"라면 "-4 -1"을 리턴하면 됩니다.
-                        </div>
-                        <div class="codeExam_exam">
-                            <p>제한 조건</p>
-                            s에는 둘 이상의 정수가 공백으로 구분되어 있습니다.
-                        </div>
-                    </div>
-                    <div class="codeExam_examFooter"></div>
-                </div>
+      <div class="codeExam_pageWrap">
+        <!-- 예제 문제 설명 출력 -->
+        <div class="codeExam_examWrap-Size">
+          <div class="codeExam_examWrap_night">
+            <div class="codeExam_examContent">
+              <h2>최댓값과 최솟값</h2>
+              <hr />
+              <div class="codeExam_examDetail">
+                <p>문제 설명</p>
+                문자열 s에는 공백으로 구분된 숫자들이 저장되어 있습니다. str에
+                나타나는 숫자 중 최소값과 최대값을 찾아 이를 "(최소값)
+                (최대값)"형태의 문자열을 반환하는 함수, solution을 완성하세요.
+                예를들어 s가 "1 2 3 4"라면 "1 4"를 리턴하고, "-1 -2 -3 -4"라면
+                "-4 -1"을 리턴하면 됩니다.
+              </div>
+              <div class="codeExam_exam">
+                <p>제한 조건</p>
+                s에는 둘 이상의 정수가 공백으로 구분되어 있습니다.
+              </div>
             </div>
-            <!-- 예제 문제 코드 출력 -->
-            <div class="codeExam_code_wrap">
-                <div class="codeExam_boxes">
-                    <div class="codeExam_boxesHide" draggable="true"></div>
-                    <div class="codeExam_boxesSize">
-                        <div id="html-box" class="codeExam_exambox codeExam_htmlBox">
-                            <div class="codeExam_codePage">
-                                <div id="codeExam_Language" class="codeExam_codeLanguage">Html</div>
-                                <div class="codeExam_codeContent-Size">
-                                    <div class="codeExam_codeContent">
-                                        <textarea cols="100" id="editing_code_html">
+            <div class="codeExam_examFooter"></div>
+          </div>
+        </div>
+        <!-- 예제 문제 코드 출력 -->
+        <div class="codeExam_code_wrap">
+          <div class="codeExam_boxes">
+            <div class="codeExam_boxesHide" draggable="true"></div>
+            <div class="codeExam_boxesSize">
+              <div id="html-box" class="codeExam_exambox codeExam_htmlBox">
+                <div class="codeExam_codePage">
+                  <div id="codeExam_Language" class="codeExam_codeLanguage">
+                    Html
+                  </div>
+                  <div class="codeExam_codeContent-Size">
+                    <div class="codeExam_codeContent">
+                      <textarea cols="100" id="editing_code_html">
 
                                         <!DOCTYPE html>
                                         <html>
@@ -62,82 +63,92 @@
                                         </body>
                                         </html>
                                     
-                                        </textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="css-box" class="codeExam_exambox codeExam_cssBox">
-                            <div class="codeExam_codePage">
-                                <div id="codeExam_Language" class="codeExam_codeLanguage">Css</div>
-                                <div class="codeExam_codeContent-Size">
-                                    <div class="codeExam_codeContent">
-                                        <textarea cols="100" id="editing_code_Css">
-
-                                            <!DOCTYPE html>
-                                            <html>
-                                            <head>
-                                              <title>별 피라미드</title>
-                                              <link rel="stylesheet" type="text/css" href="style.css">
-                                            </head>
-                                            <body>
-                                              <div id="pyramid"></div>
-                                            
-                                              <script src="script.js"></script>
-                                            </body>
-                                            </html>
-                                        
-                                            </textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="js-box" class="codeExam_exambox codeExam_jsBox">
-                            <div class="codeExam_codePage">
-                                <div id="codeExam_Language" class="codeExam_codeLanguage">JavaScript</div>
-                                <div class="codeExam_codeContent-Size">
-                                    <div class="codeExam_codeContent">
-                                        <textarea cols="100" id="editing_code_Js">
-
-                                            <!DOCTYPE html>
-                                            <html>
-                                            <head>
-                                              <title>별 피라미드</title>
-                                              <link rel="stylesheet" type="text/css" href="style.css">
-                                            </head>
-                                            <body>
-                                              <div id="pyramid"></div>
-                                            
-                                              <script src="script.js"></script>
-                                            </body>
-                                            </html>
-                                        
-                                            </textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                        </textarea
+                      >
                     </div>
+                  </div>
                 </div>
-                <!-- 코드 결과창 출력 _ frontend -->
-                <div class="codeExam_resultContainer">
-                    <div class="codeExam_resultSize">
-                        <div class="codeExam_StartAndSave">
-                            <button>start</button>
-                            <!-- <div class="checkbox-wrapper-2">
+              </div>
+              <div id="css-box" class="codeExam_exambox codeExam_cssBox">
+                <div class="codeExam_codePage">
+                  <div id="codeExam_Language" class="codeExam_codeLanguage">
+                    Css
+                  </div>
+                  <div class="codeExam_codeContent-Size">
+                    <div class="codeExam_codeContent">
+                      <textarea cols="100" id="editing_code_Css">
+
+                                            <!DOCTYPE html>
+                                            <html>
+                                            <head>
+                                              <title>별 피라미드</title>
+                                              <link rel="stylesheet" type="text/css" href="style.css">
+                                            </head>
+                                            <body>
+                                              <div id="pyramid"></div>
+                                            
+                                              <script src="script.js"></script>
+                                            </body>
+                                            </html>
+                                        
+                                            </textarea
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="js-box" class="codeExam_exambox codeExam_jsBox">
+                <div class="codeExam_codePage">
+                  <div id="codeExam_Language" class="codeExam_codeLanguage">
+                    JavaScript
+                  </div>
+                  <div class="codeExam_codeContent-Size">
+                    <div class="codeExam_codeContent">
+                      <textarea cols="100" id="editing_code_Js">
+
+                                            <!DOCTYPE html>
+                                            <html>
+                                            <head>
+                                              <title>별 피라미드</title>
+                                              <link rel="stylesheet" type="text/css" href="style.css">
+                                            </head>
+                                            <body>
+                                              <div id="pyramid"></div>
+                                            
+                                              <script src="script.js"></script>
+                                            </body>
+                                            </html>
+                                        
+                                            </textarea
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 코드 결과창 출력 _ frontend -->
+          <div class="codeExam_resultContainer">
+            <div class="codeExam_resultSize">
+              <div class="codeExam_StartAndSave">
+                <button>start</button>
+                <!-- <div class="checkbox-wrapper-2">
                                 <input type="checkbox" id="main_Nav_themecheck" class="sc-gJwTLC ikxBAC gJwTLC"
                                     onclick='is_checked()'>
                             </div> -->
-                            <!-- <button class="codeExam_saveExamBtn"><i class="fa-regular fa-heart" style="color: #d83b44;"></i></button> -->
-                        </div>
-                        <div class="codeExam_resultDiv">
-                            <!-- 받은 코드를 시연하는 창 -->
-                            <iframe id="main_Nav_iframe" src="/views/codeExam.html"></iframe>
-                        </div>
-                    </div>
-                </div>
+                <!-- <button class="codeExam_saveExamBtn"><i class="fa-regular fa-heart" style="color: #d83b44;"></i></button> -->
+              </div>
+              <div class="codeExam_resultDiv">
+                <!-- 받은 코드를 시연하는 창 -->
+                <iframe
+                  id="main_Nav_iframe"
+                  src="/views/codeExam.html"
+                ></iframe>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

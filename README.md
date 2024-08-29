@@ -11,7 +11,8 @@
 - app.js 서버를 실행하기 위한 Main 파일(express 미들웨어 설정 )
   순두부 아니다 팀협업 테스트
 
-# git 참고사항  
+# git 참고사항
+
 - .gitignore 사용법
 
 1. node_module 지우고 다들 로컬에서 npm install 입력후 만듬
@@ -67,10 +68,11 @@
 
 
 ```
-# 로그인 페이지 
+
+# 로그인 페이지
 
 <img width="1439" alt="image" src="https://github.com/sin-hyunjin/CodingTest_in_progress/assets/116487398/c8b5cd8d-1c1e-4b8d-990b-8eb28f60e940">
 
-# 회원가입 페이지 
+# 회원가입 페이지
 
 <img width="1438" alt="image" src="https://github.com/sin-hyunjin/CodingTest_in_progress/assets/116487398/e0245f53-9623-4554-a0bd-4a0692ef0617">

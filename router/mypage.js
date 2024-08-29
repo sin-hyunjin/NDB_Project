@@ -89,7 +89,7 @@ router.get("/", (req, res) => {
 
                 res.render("myPage.html", {
                   id: memberData.USER_ID,
-                  email:memberData.EMAIL,
+                  email: memberData.EMAIL,
                   name: memberData.MEMBER_NAME,
                   password: memberData.PW,
                   member_lv: memberData.MEMBER_LV,
@@ -109,7 +109,7 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/index", (req, res) => {
+router.get("/home", (req, res) => {
   const query = `SELECT * FROM QUESTION `;
 
   // DB 연결
@@ -123,7 +123,7 @@ router.get("/index", (req, res) => {
         console.log("쿼리문 실행");
         // console.log(results[0].EXAM_CONTENT);
 
-        res.render("index.html", { results: results }); // 수정: results를 questions로 전달
+        res.render("home.html", { results: results }); // 수정: results를 questions로 전달
       } else {
         console.error("쿼리 실행 오류:", err);
         // 에러 처리 로직 추가

@@ -64,15 +64,15 @@ router.get(
   function (req, res) {
     // Successful authentication, redirect to the "/profile" route
 
-    res.redirect("/index");
+    res.redirect("/home");
   }
 );
 
 // 사용자 프로필 페이지
-router.get("/index", (req, res) => {
+router.get("/home", (req, res) => {
   if (req.isAuthenticated()) {
     // res.send(`<h1>Hello, ${req.user.displayName}</h1>`);
-    res.render("index.html");
+    res.render("home.html");
   } else {
     res.render("login.html");
   }
@@ -117,15 +117,15 @@ router.get(
   "/auth/kakao/callback",
   passport.authenticate("kakao", { failureRedirect: "/" }),
   function (req, res) {
-    // Successful authentication, redirect to the "/index" route
-    res.render("index.html", { user: req.user });
+    // Successful authentication, redirect to the "/home" route
+    res.render("home.html", { user: req.user });
   }
 );
 
 // 사용자 프로필 페이지
-router.get("/index", (req, res) => {
+router.get("/home", (req, res) => {
   if (req.isAuthenticated()) {
-    res.render("index.html");
+    res.render("home.html");
   } else {
     res.render("login.html");
   }
@@ -175,15 +175,15 @@ router.get(
   "/auth/github/callback",
   passport.authenticate("github", { failureRedirect: "/" }),
   function (req, res) {
-    // Successful authentication, redirect to the "/index" route
-    res.redirect("/index");
+    // Successful authentication, redirect to the "/home" route
+    res.redirect("/home");
   }
 );
 
 // 사용자 프로필 페이지
-router.get("/index", (req, res) => {
+router.get("/home", (req, res) => {
   if (req.isAuthenticated()) {
-    res.render("index.html", { user: req.user });
+    res.render("home.html", { user: req.user });
   } else {
     res.render("login.html");
   }
@@ -204,8 +204,8 @@ router.get("/join", (req, res) => {
   res.render("join.html");
 });
 
-router.get("/index", (req, res) => {
-  res.render("index.html");
+router.get("/home", (req, res) => {
+  res.render("home.html");
 });
 
 router.post("/join", (req, res) => {
@@ -279,7 +279,7 @@ router.get("/setSession", (req, res) => {
   res.send("세션 만들기");
 });
 
-router.post("/index", (req, res) => {
+router.post("/home", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   const query = `SELECT * FROM MEMBER WHERE EMAIL = ? AND PW = ?`;
@@ -300,8 +300,8 @@ router.post("/index", (req, res) => {
 
         const userEmail = (req.session.userEmail = email);
         console.log("user-email", userEmail);
-        // 로그인 성공 시 index.html 페이지로 이동
-        res.render("index.html", { results: results });
+        // 로그인 성공 시 home.html 페이지로 이동
+        res.render("home.html", { results: results });
       } else {
         console.log("쿼리문 실패");
         res.write(`<!DOCTYPE html>

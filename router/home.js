@@ -5,7 +5,7 @@ const passport = require("passport");
 const db = require("../config/datebase");
 let conn = db.init();
 // 예제 시연창
-router.get("/index/codeExam", (req, res) => {
+router.get("/home/codeExam", (req, res) => {
   // res.send(`<h1>Hello, ${req.user.displayName}</h1>`);
   res.render("codeExam.html");
 });
