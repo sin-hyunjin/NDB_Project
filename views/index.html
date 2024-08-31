@@ -127,7 +127,7 @@
                                 <img src="https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg"
                                     alt="User Profile Picture" class="user-image">
                                 <div class="user-details" >
-                                    <p class="user-email" name="email">{{ results[0].EMAIL }}</p>
+                                    <p class="user-email" name="email">{{name}}</p>
                                     <p class="user-grade" name="vip">{{ results[0].MEMBER_LV }}</p>
                                 </div>
                             </div>
@@ -188,8 +188,10 @@
                         <!-- 로그인 버튼 -->
                         <!-- <button type="button" class="main_loginBtn main_modalBtn">로그인</button> -->
                         <!-- 회원가입 버튼 -->
-                        <form id="login-page" >
-                            <button type="submit" class="main_signupBtn main_modalBtn">log out</button>
+                        <form  >
+                            <button type="submit" class="main_signupBtn main_modalBtn">
+                                <a href="#" id="login-page"> log out</a>
+                               </button>
                         </form>
                     </div>
                 </div>
