@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 // Nunjucks 설정
 app.set("view engine", "html");
+
 nunjucks.configure(path.join(__dirname, "../views"), {
   express: app,
   watch: true,
