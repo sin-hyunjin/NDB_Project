@@ -6,15 +6,22 @@ const passport = require("passport");
 const path = require("path");
 const app = express();
 
+app.use(express.static(path.join(__dirname, "public")));
 
-app.get('/mypage/reVeiw', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'reviewNote.html'));
+app.get("/mypage/reVeiw", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "reviewNote.html"));
 });
-
+// 루트 라우트 핸들러
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "index.html"));
+});
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "login.html"));
+});
 
 // Nunjucks 설정
 app.set("view engine", "html");
-nunjucks.configure("views", { express: app, watch: true , noCache: true});
+nunjucks.configure("views", { express: app, watch: true, noCache: true });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -36,15 +43,12 @@ app.use(passport.session());
 
 const loginRouter = require("./router/login");
 app.use(loginRouter);
-const joinRouter = require("./router/login");
-app.use(joinRouter);
 const indexRouter = require("./router/codeExam");
 app.use(indexRouter);
 const mypageRouter = require("./router/mypage");
-app.use('/mypage',mypageRouter);
+app.use("/mypage", mypageRouter);
 const codeIframeRouter = require("./router/index");
-app.use(codeIframeRouter)
-
+app.use(codeIframeRouter);
 
 app.listen(3003, () => {
   console.log("서버가 3003번 포트에서 실행 중입니다.");
