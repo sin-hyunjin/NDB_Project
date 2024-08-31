@@ -134,7 +134,7 @@
                             <hr> <!-- 구분선 추가 -->
                             <!-- 회원 정보 섹션 끝 -->
 
-                            <a href="http://localhost:3003/mypage" id="mypage_btn_open">
+                            <a href={`${process.env.BASE_URL}/mypage`} id="mypage_btn_open">
                                 <li>마이페이지</li>
                             </a>
                             <a href="#" class="subs_btn_open">
@@ -144,7 +144,7 @@
                         </ul>
                     </div>
                     <div class="main_nav_logo">
-                        <a href="http://localhost:3003/index">NDB</a>
+                        <a href="#" id="main-page">NDB</a>
 
                     </div>
                     <div class="main_navMiddle">
@@ -188,7 +188,7 @@
                         <!-- 로그인 버튼 -->
                         <!-- <button type="button" class="main_loginBtn main_modalBtn">로그인</button> -->
                         <!-- 회원가입 버튼 -->
-                        <form action="http://localhost:3003/login">
+                        <form id="login-page" >
                             <button type="submit" class="main_signupBtn main_modalBtn">log out</button>
                         </form>
                     </div>
@@ -218,20 +218,20 @@
                     <div>파이썬 반복문</div>
                 </div>
                 <div>
-                    <div>2.</div>
-                    <div>파이썬 반복문</div>
+                <div>2.</div>
+                    <div>HTML 기본 구조</div>
                 </div>
                 <div>
                     <div>3.</div>
-                    <div>파이썬 반복문</div>
+                    <div>CSS Flexbox</div>
                 </div>
                 <div>
                     <div>4.</div>
-                    <div>파이썬 반복문</div>
+                    <div>React Hooks</div>
                 </div>
                 <div>
                     <div>5.</div>
-                    <div>파이썬 반복문</div>
+                    <div>Node.js Express</div>
                 </div>
             </div>
             <!-- 인기 검색어 끝 -->
@@ -401,7 +401,7 @@
                         <!-- <input type="email" placeholder="이메일 주소를 입력하세요."> -->
 
                         <div class="subs_btn">
-                            <a href="http://localhost:3003/index" id="subscribe-link"><button>구독하기</button></a>
+                            <a href="#" id="main-page"><button>구독하기</button></a>
                         </div>
                     </div>
                     <div class="content2 content-box">
@@ -502,31 +502,7 @@
             </div>
         </div>
         <script src="/js/eunwoo_index.js"></script>
-        <!-- <script>
-            // 열기 버튼을 클릭하면 모달 창을 보이게 하도록 이벤트 핸들러 추가
-            $('.subs_btn_open').click(function () {
-                $('.subs_modal, .overlay').addClass("active");
-            });
-
-            // 닫기 버튼을 클릭하면 모달 창이 닫히도록 이벤트 핸들러 추가
-            $('.subs_button_close, .overlay').click(function () {
-                $('.subs_modal, .overlay').removeClass("active");
-            });
-
-            //무료 구독창 클리 시 완료 문구 및 마이페이지로 이동 
-            document.getElementById("subscribe-link").addEventListener("click", function (event) {
-                event.preventDefault(); // 링크의 기본 동작 중단
-                alert("구독이 완료되었습니다! Basic 회원이 되신 걸 축하드립니다!"); // 알림창 표시
-                window.location.href = "http://localhost:3003/mypage"; // 주소로 이동
-            });
-
-            document.getElementById("mypage_btn_open").addEventListener("click", function (event) {
-                window.location.href = "http://localhost:3003/mypage"; // 주소로 이동
-            });
-        </script> -->
-
-        
-
+        <script src="/js/config.js"></script>
 </body>
 
 </html>

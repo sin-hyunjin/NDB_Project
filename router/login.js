@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const session = require("express-session");
 const router = express.Router();
@@ -13,7 +15,7 @@ let conn = db.init();
 
 app.use(
   session({
-    secret: "your-secret-key", // 세션 암호화를 위한 비밀키
+    secret: process.env.SESSION_SECRET, // 세션 암호화를 위한 비밀키
     resave: false,
     saveUninitialized: true,
   })
@@ -22,9 +24,9 @@ app.use(
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 // 구글 OAuth 2.0 클라이언트 ID와 시크릿 설정
-const GOOGLE_CLIENT_ID =
-  "387069556796-pal9i13mtuj16inovquf5h4ucs8s926d.apps.googleusercontent.com"; // 여기에 발급받은 클라이언트 ID 입력
-const GOOGLE_CLIENT_SECRET = "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"; // 여기에 발급받은 클라이언트 시크릿 입력
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET; // 여기에 발급받은 클라이언트 시크릿 입력
 
 // Passport 구글 로그인 전략 설정
 passport.use(
@@ -83,7 +85,7 @@ router.get("/index", (req, res) => {
    ======================================= */
 
 // 카카오 OAuth 2.0 클라이언트 ID 설정
-const KAKAO_CLIENT_ID = "accfec57b1b9be32ee75b2c22a044a2b"; // 여기에 발급받은 클라이언트 ID 입력
+const KAKAO_CLIENT_ID = process.env.KAKAO_CLIENT_ID;
 
 // Passport 카카오 로그인 전략 설정
 passport.use(
@@ -136,8 +138,8 @@ router.get("/index", (req, res) => {
    =====================================*/
 
 // 깃허브 OAuth 2.0 클라이언트 ID 및 시크릿 설정
-const GITHUB_CLIENT_ID = "cdc134ce6df8f8df71d8"; // 여기에 발급받은 클라이언트 ID 입력
-const GITHUB_CLIENT_SECRET = "daab2cd2bd2cc57a5e04e265eadc040abfeb48ce"; // 여기에 발급받은 클라이언트 시크릿 입력
+const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
+const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 
 // Passport 깃허브 로그인 전략 설정
 passport.use(
@@ -314,7 +316,7 @@ router.post("/index", (req, res) => {
             <script>
             
                 alert('로그인 실패. 이메일 또는 비밀번호가 잘못되었습니다.');
-                window.location="http://localhost:3003/login";
+                window.location= process.env.BASE_URL + '/login';
             </script>
         </body>
         </html>`);

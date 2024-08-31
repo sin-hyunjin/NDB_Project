@@ -2,11 +2,11 @@ const mysql = require("mysql2");
 
 // // 고용 데이터 베이스 계정 만든후 바꿀 예정
 let conn = {
-  host: "project-db-stu3.smhrd.com",
-  user: "Insa4_JSA_hacksim_6",
-  password: "aishcool6",
-  port: "3307",
-  database: "Insa4_JSA_hacksim_6",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+  database: process.env.DB_DATABASE,
 };
 
 module.exports = {

@@ -1,9 +1,12 @@
+require("dotenv").config();
 const express = require("express");
 const nunjucks = require("nunjucks");
 const session = require("express-session");
 const path = require("path");
 
 const app = express();
+console.log("DB_USER:", process.env.DB_USER);
+console.log("DB_PASSWORD:", process.env.DB_PASSWORD);
 
 // 정적 파일 제공
 app.use(express.static(path.join(__dirname, "../public")));
@@ -32,7 +35,14 @@ app.use(
 
 // 라우트 설정
 app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../views", "login.html"));
+});
+app.get("/index", (req, res) => {
   res.sendFile(path.join(__dirname, "../views", "index.html"));
+});
+
+app.get("/join", (req, res) => {
+  res.sendFile(path.join(__dirname, "../views", "join.html"));
 });
 
 app.get("/login", (req, res) => {
@@ -43,8 +53,12 @@ app.get("/mypage/reVeiw", (req, res) => {
   res.sendFile(path.join(__dirname, "../views", "reviewNote.html"));
 });
 
-app.listen(3003, () => {
-  console.log("서버가 3003번 포트에서 실행 중입니다.");
+app.get("/config", (req, res) => {
+  res.json({
+    BASE_URL: process.env.BASE_URL,
+    API_KEY: process.env.API_KEY,
+    GPT_KEY: process.env.GPT_KEY,
+  });
 });
 
 const loginRouter = require("../router/login");
@@ -56,4 +70,7 @@ app.use("/mypage", mypageRouter);
 const codeIframeRouter = require("../router/index");
 app.use(codeIframeRouter);
 
+app.listen(3003, () => {
+  console.log("서버가 3003번 포트에서 실행 중입니다.");
+});
 module.exports = app;
