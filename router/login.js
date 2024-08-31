@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config();
 
 const express = require("express");
 const session = require("express-session");
@@ -281,7 +281,7 @@ router.get("/setSession", (req, res) => {
   res.send("세션 만들기");
 });
 
-router.post("/index", (req, res) => {
+router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   const query = `SELECT * FROM MEMBER WHERE EMAIL = ? AND PW = ?`;
@@ -316,12 +316,12 @@ router.post("/index", (req, res) => {
             <script>
             
                 alert('로그인 실패. 이메일 또는 비밀번호가 잘못되었습니다.');
-                window.location= process.env.BASE_URL + '/login';
+                window.location= "https://ndb-project.vercel.app/login?"
             </script>
         </body>
         </html>`);
 
-        // res.send("로그인 실패. 이메일 또는 비밀번호가 잘못되었습니다.");
+        res.send("로그인 실패. 이메일 또는 비밀번호가 잘못되었습니다.");
       }
     });
   });
